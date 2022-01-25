@@ -1,0 +1,22 @@
+$unit: 'rem';
+
+/**
+ * Por convenção os nomes das cores devem começar com
+ * dois traços (--), ao estilo das variáveis CSS.
+ */
+$colors: (
+  --primary: #9e2457,
+  --secondary: #6900af,
+
+  // Adicione mais cores abaixo...
+  // --blue-100: #0c53bd,
+);
+
+
+$breakpoints: (
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+);

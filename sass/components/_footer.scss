@@ -1,0 +1,25 @@
+.layer-bredi {
+  background-color: black;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    small {
+      color: white;
+      font-size: 1.4rem;
+    }
+
+    a {
+      color: white;
+      font-size: 1.4rem;
+      margin-right: 16px;
+    }
+
+    .fab {
+      font-size: 22px;
+    }
+  }
+}
