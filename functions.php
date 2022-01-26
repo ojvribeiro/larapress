@@ -92,10 +92,10 @@ function bredi_scripts() {
 	wp_enqueue_style( 'bredi-style', get_stylesheet_uri(), array(), _S_VERSION );
 
   // Libraries loaded on Webpack file
-	wp_enqueue_script( 'bredi-bundle', __DIR .'/build/js/bundle.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bredi-bundle', __DIR .'/public/js/bundle.js', array(), _S_VERSION, true );
 
   // Main script
-	wp_enqueue_script( 'bredi-main', __DIR .'/build/js/main.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bredi-main', __DIR .'/public/js/main.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

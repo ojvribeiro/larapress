@@ -1,6 +1,6 @@
 {
-    "/build/js/main.js": "/build/js/main.js",
+    "/public/js/main.js": "/public/js/main.js",
     "/style.css": "/style.css",
-    "/build/css/bundle.css": "/build/css/bundle.css",
-    "/build/js/bundle.js": "/build/js/bundle.js"
+    "/public/css/bundle.css": "/public/css/bundle.css",
+    "/public/js/bundle.js": "/public/js/bundle.js"
 }
