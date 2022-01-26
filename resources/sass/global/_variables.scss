@@ -5,8 +5,16 @@ $unit: 'rem';
  * dois traços (--), ao estilo das variáveis CSS.
  */
 $colors: (
-  --primary: #9e2457,
-  --secondary: #6900af,
+  --primary: #1d874a,
+  --secondary: #7f392c,
+
+  --white: #fff,
+  --black: #1b1b1b,
+
+  --green-100: #1d874a,
+  --yellow-100: #e0d0a6,
+  --blue-100: #172852,
+  --red-100: #7f392c,
 
   // Adicione mais cores abaixo...
   // --blue-100: #0c53bd,
