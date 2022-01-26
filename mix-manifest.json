@@ -1,6 +1,6 @@
 {
-    "/public/js/main.js": "/public/js/main.js",
-    "/style.css": "/style.css",
-    "/public/css/bundle.css": "/public/css/bundle.css",
-    "/public/js/bundle.js": "/public/js/bundle.js"
+    "/public/js/main.js": "/public/js/main.js?id=fb2e27929490557c070f",
+    "/style.css": "/style.css?id=7c759ec24de788000d9f",
+    "/public/css/bundle.css": "/public/css/bundle.css?id=d41d8cd98f00b204e980",
+    "/public/js/bundle.js": "/public/js/bundle.js?id=d41d8cd98f00b204e980"
 }
