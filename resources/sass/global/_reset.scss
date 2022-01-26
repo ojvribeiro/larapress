@@ -44,10 +44,11 @@ html, body {
 
 body {
   font-size: 1.6rem;
-
-
+  
+  
   main {
     flex: 1;
+    margin-top: 120px;
   }
 }
 
@@ -137,9 +138,23 @@ button {
 }
 
 // Bootstrap resets and fix
+.navbar {
+  position: unset;
+  display: unset;
+  flex-wrap: unset;
+  align-items: unset;
+  justify-content: unset;
+  padding-top: unset;
+  padding-bottom: unset;
+}
+
+.form-control,
+.btn {
+  font-size: 1.6rem;
+}
+
 .btn {
     padding: 12px 16px;
-    font-size: 16px;
 }
 
 .form-control:focus {
