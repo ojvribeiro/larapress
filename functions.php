@@ -8,6 +8,7 @@
  */
 
 
+include('blade/blade.php');
 
 
 if ( ! defined( '_DIR' ) ) {

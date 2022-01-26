@@ -14,6 +14,8 @@ get_header();
 
 	<main>
     Página inicial
+
+    {{-- Comentário de teste do Blade --}}
 	</main><!-- main -->
 
 <?php

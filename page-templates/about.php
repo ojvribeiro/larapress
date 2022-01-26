@@ -6,7 +6,10 @@
   get_header();
 ?>
 
-<main></main>
+<main>
+  <h1>Sobre</h1>
+  
+</main>
 
 <?php
   get_footer();
