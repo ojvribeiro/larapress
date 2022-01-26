@@ -13,6 +13,9 @@
   "bugs": {
     "url": "https://github.com/brediweb/boilerplate-wordpress/issues"
   },
+  "engines": {
+    "node": ">=14.16.1"
+  },
   "scripts": {
     "dev": "npm run development",
     "development": "mix",
