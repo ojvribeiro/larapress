@@ -185,7 +185,7 @@ function bredi_register_required_plugins() {
 			'source'             => 'slate-admin-theme.zip', // The plugin ZIP file (/your-theme/plugins/tgm/plugins/).
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			'version'            => '1.2.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository.
