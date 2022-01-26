@@ -6,7 +6,7 @@ mix
   .setPublicPath('./')
 
   .webpackConfig({
-    devtool: "source-map"
+    devtool: 'source-map'
   })
   
   /**
@@ -59,6 +59,8 @@ mix
    * Gera os arquivos de mapa
    */
   .sourceMaps()
+
+  .version()
 
   
   .browserSync({
