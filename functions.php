@@ -107,11 +107,6 @@ add_action( 'wp_enqueue_scripts', 'bredi_scripts' );
 
 
 /**
- * Implement the Custom Header feature.
- */
-require _DIR .'/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require _DIR .'/inc/template-tags.php';

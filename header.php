@@ -13,19 +13,17 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
+  <?php
+    require_once _DIR .'/resources/views/components/head.php';
+  ?>
+	
+  <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-	<header>
-		<!-- .navbar -->
-    <nav>
-      <div class="navbar"></div>
-    </nav>
-	</header><!-- header -->
+  <?php
+    require_once _DIR .'/resources/views/components/header.php';
+  ?>
