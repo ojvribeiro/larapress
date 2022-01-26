@@ -19,6 +19,10 @@ if ( ! defined( '__DIR' ) ) {
 	define( '__DIR', get_template_directory_uri() );
 }
 
+if ( ! defined( '__IMGDIR' ) ) {
+	define( '__IMGDIR', get_template_directory_uri() .'/resources/img' );
+}
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '0.0.1' );
