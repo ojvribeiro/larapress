@@ -19,6 +19,10 @@ if ( ! defined( '__DIR' ) ) {
 	define( '__DIR', get_template_directory_uri() );
 }
 
+if ( ! defined( '__IMGDIR' ) ) {
+	define( '__IMGDIR', get_template_directory_uri() .'/resources/img' );
+}
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '0.0.1' );
@@ -92,10 +96,10 @@ function bredi_scripts() {
 	wp_enqueue_style( 'bredi-style', get_stylesheet_uri(), array(), _S_VERSION );
 
   // Libraries loaded on Webpack file
-	wp_enqueue_script( 'bredi-bundle', __DIR .'/build/js/bundle.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bredi-bundle', __DIR .'/public/js/bundle.js', array(), _S_VERSION, true );
 
   // Main script
-	wp_enqueue_script( 'bredi-main', __DIR .'/build/js/main.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bredi-main', __DIR .'/public/js/main.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -105,11 +109,6 @@ add_action( 'wp_enqueue_scripts', 'bredi_scripts' );
 
 
 
-
-/**
- * Implement the Custom Header feature.
- */
-require _DIR .'/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -186,7 +185,7 @@ function bredi_register_required_plugins() {
 			'source'             => 'slate-admin-theme.zip', // The plugin ZIP file (/your-theme/plugins/tgm/plugins/).
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			'version'            => '1.2.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository.

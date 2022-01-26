@@ -12,11 +12,9 @@
 get_header();
 ?>
 
-	<main>
-    Página inicial
-
-    {{-- Comentário de teste do Blade --}}
-	</main><!-- main -->
+	<?php
+    require_once _DIR .'/page-templates/index.php';
+  ?>
 
 <?php
 get_footer();

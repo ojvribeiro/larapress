@@ -6,7 +6,7 @@ mix
   .setPublicPath('./')
 
   .webpackConfig({
-    devtool: "source-map"
+    devtool: 'source-map'
   })
   
   /**
@@ -17,7 +17,7 @@ mix
       // Insira os caminhos das bibliotecas que usará abaixo...
       // 'node_modules/bootstrap/dist/css/bootstrap.min.css',
 
-    ], 'build/css/bundle.css'
+    ], 'public/css/bundle.css'
   )
 
 
@@ -30,14 +30,14 @@ mix
     // Insira os caminhos das bibliotecas que usará abaixo...
 
     
-  ], 'build/js/bundle.js')
+  ], 'public/js/bundle.js')
   
   
   
   /**
    * Compilação do arquivo de estilo principal para o arquivo style.css
    */
-  .sass('sass/main.scss', 'style.css')
+  .sass('resources/sass/main.scss', 'style.css')
   .options({
     autoprefixer: {
       options: {
@@ -52,13 +52,15 @@ mix
   /**
    * Compilação do arquivo de scripts principal para bundle.js
    */
-  .js('js/main.js', 'build/js/main.js')
+  .js('resources/js/main.js', 'public/js/main.js')
 
 
   /**
    * Gera os arquivos de mapa
    */
   .sourceMaps()
+
+  .version()
 
   
   .browserSync({
