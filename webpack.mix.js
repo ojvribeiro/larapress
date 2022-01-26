@@ -1,9 +1,9 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
-const themePath = './';
+const siteURL = 'http://wp-boiler.test'
 
 mix
-  .setPublicPath(themePath)
+  .setPublicPath('./')
 
   .webpackConfig({
     devtool: "source-map"
@@ -62,11 +62,11 @@ mix
 
   
   .browserSync({
-    proxy: "http://peabiru.test",
+    proxy: siteURL,
     files: [
-        `${themePath}/**/*.php`,
-        `${themePath}/**/*.js`,
-        `${themePath}/**/*.css`,
+      './**/*.php',
+      './**/*.js',
+      './**/*.css',
     ]
 })
-;
+
