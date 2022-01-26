@@ -1,0 +1,19 @@
+@use 'sass:math';
+
+@use 'variables' as var;
+
+@function size($size) {
+  @if var.$unit == 'px' {
+    @return #{$size}#{var.$unit};
+  }
+  @else if var.$unit == 'rem' {
+    @return #{math.div($size, 10)}#{var.$unit};
+  }
+}
+
+
+// To color names, check `resources/sass/global/variables.scss` file.
+// Use the `color(color-name)` function to apply the color
+@function color($color-name) {
+  @return map-get(var.$colors, #{$color-name});
+}

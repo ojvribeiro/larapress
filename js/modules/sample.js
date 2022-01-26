@@ -1,0 +1,1 @@
+console.log('Módulo carregado!');
