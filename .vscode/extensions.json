@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "stevencl.adddoccomments",
+    "formulahendry.auto-close-tag",
+    "kevinkyang.auto-comment-blocks",
+    "formulahendry.auto-rename-tag",
+    "namesmt.blade-php",
+    "usernamehw.errorlens",
+    "rifi2k.format-html-in-php",
+    "eamodio.gitlens",
+    "vincaslt.highlight-matching-tag",
+    "dbaeumer.jshint",
+    "onecentlin.laravel-blade",
+    "christian-kohler.path-intellisense",
+    "bmewburn.vscode-intelephense-client",
+    "syler.sass-indented",
+    "simonsiefke.svg-preview"
+  ]
+}
