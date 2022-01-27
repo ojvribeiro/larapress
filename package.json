@@ -34,5 +34,8 @@
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1"
   }
 }
