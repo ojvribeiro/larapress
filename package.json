@@ -28,6 +28,7 @@
   "devDependencies": {
     "browser-sync": "^2.27.7",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "jshint": "^2.13.4",
     "laravel-mix": "^6.0.6",
     "postcss": "^8.1.14",
     "resolve-url-loader": "^4.0.0",
