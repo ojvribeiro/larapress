@@ -7,7 +7,7 @@
   transition: .2s ease-in-out;
   font-size: 16px;
   font-weight: bold;
-  color: color(--red-100);
+  color: color(--white);
 }
 
 
@@ -17,73 +17,25 @@
 /**
  * Solid button
  */
-.btn-theme {
-  background-color: color(--yellow-100);
-  color: color(--red-100);
+.btn {
+  background-color: color(--primary);
+  color: color(--white);
   box-shadow: 2px 3px 8px rgba(#000, 25%);
   @extend %button-defaults;
 
   &:hover {
-    background-color: lighten(color(--yellow-100), 5%);
+    background-color: lighten(color(--primary), 5%);
     box-shadow: 2px 8px 16px rgba(#000, 30%);
   }
 
   &:active {
-      background-color: lighten(color(--yellow-100), 10%);
+      background-color: lighten(color(--primary), 10%);
   }
 
   &:focus-visible {
-    background-color: lighten(color(--yellow-100), 20%);
+    background-color: lighten(color(--primary), 20%);
   }
 }
-
-
-.btn-theme-sm {
-  background-color: color(--yellow-100);
-  color: color(--red-100);
-  box-shadow: 2px 3px 8px rgba(#000, 25%);
-  @extend %button-defaults;
-  padding: 4px 16px;
-
-  &:hover {
-    background-color: lighten(color(--yellow-100), 5%);
-    box-shadow: 2px 8px 16px rgba(#000, 30%);
-  }
-
-  &:active {
-    background-color: lighten(color(--yellow-100), 10%);
-  }
-
-  &:focus-visible {
-    background-color: lighten(color(--yellow-100), 20%);
-  }
-}
-
-
-/**
- * Flat button
- */
-.btn-flat {
-  background-color: transparent;
-  color: #202020;
-  box-shadow: none;
-  @extend %button-defaults;
-
-  &:hover {
-    background-color: rgba(#000, 10%);
-    color: #202020;
-  }
-
-  &:active {
-    background-color: rgba(#000, 20%);
-    color: #202020;
-  }
-
-  &:focus-visible {
-      background-color: rgba(#000, 20%);
-  }
-}
-
 
 
 // Add more button styles below...

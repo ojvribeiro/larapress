@@ -10,11 +10,7 @@
  */
 
 get_header();
-?>
 
-	<?php
-    require_once _DIR .'/page-templates/index.php';
-  ?>
+require_once _DIR .'/page-templates/index.php';
 
-<?php
 get_footer();
