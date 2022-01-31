@@ -10,7 +10,7 @@
  *
  * @package    TGM-Plugin-Activation
  * @subpackage Example
- * @version    2.6.1 for parent theme Bredi
+ * @version    2.6.1 for parent theme Larapress
  * @author     Thomas Griffin, Gary Jones, Juliette Reinders Folmer
  * @copyright  Copyright (c) 2011, Thomas Griffin
  * @license    http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
@@ -33,7 +33,7 @@
  */
 require_once get_template_directory() . '/path/to/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'bredi_register_required_plugins' );
+add_action( 'tgmpa_register', 'larapress_register_required_plugins' );
 
 /**
  * Register the required plugins for this theme.
@@ -52,7 +52,7 @@ add_action( 'tgmpa_register', 'bredi_register_required_plugins' );
  *
  * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
  */
-function bredi_register_required_plugins() {
+function larapress_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
@@ -121,7 +121,7 @@ function bredi_register_required_plugins() {
 	 * Only uncomment the strings in the config array if you want to customize the strings.
 	 */
 	$config = array(
-		'id'           => 'bredi',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'id'           => 'larapress',                 // Unique ID for hashing notices for multiple instances of TGMPA.
 		'default_path' => '',                      // Default absolute path to bundled plugins.
 		'menu'         => 'tgmpa-install-plugins', // Menu slug.
 		'parent_slug'  => 'themes.php',            // Parent menu slug.
@@ -134,76 +134,76 @@ function bredi_register_required_plugins() {
 
 		/*
 		'strings'      => array(
-			'page_title'                      => __( 'Install Required Plugins', 'bredi' ),
-			'menu_title'                      => __( 'Install Plugins', 'bredi' ),
+			'page_title'                      => __( 'Install Required Plugins', 'larapress' ),
+			'menu_title'                      => __( 'Install Plugins', 'larapress' ),
 			/* translators: %s: plugin name. * /
-			'installing'                      => __( 'Installing Plugin: %s', 'bredi' ),
+			'installing'                      => __( 'Installing Plugin: %s', 'larapress' ),
 			/* translators: %s: plugin name. * /
-			'updating'                        => __( 'Updating Plugin: %s', 'bredi' ),
-			'oops'                            => __( 'Something went wrong with the plugin API.', 'bredi' ),
+			'updating'                        => __( 'Updating Plugin: %s', 'larapress' ),
+			'oops'                            => __( 'Something went wrong with the plugin API.', 'larapress' ),
 			'notice_can_install_required'     => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'This theme requires the following plugin: %1$s.',
 				'This theme requires the following plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_install_recommended'  => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'This theme recommends the following plugin: %1$s.',
 				'This theme recommends the following plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_ask_to_update'            => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
 				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_ask_to_update_maybe'      => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'There is an update available for: %1$s.',
 				'There are updates available for the following plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_activate_required'    => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'The following required plugin is currently inactive: %1$s.',
 				'The following required plugins are currently inactive: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_activate_recommended' => _n_noop(
 				/* translators: 1: plugin name(s). * /
 				'The following recommended plugin is currently inactive: %1$s.',
 				'The following recommended plugins are currently inactive: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'install_link'                    => _n_noop(
 				'Begin installing plugin',
 				'Begin installing plugins',
-				'bredi'
+				'larapress'
 			),
 			'update_link' 					  => _n_noop(
 				'Begin updating plugin',
 				'Begin updating plugins',
-				'bredi'
+				'larapress'
 			),
 			'activate_link'                   => _n_noop(
 				'Begin activating plugin',
 				'Begin activating plugins',
-				'bredi'
+				'larapress'
 			),
-			'return'                          => __( 'Return to Required Plugins Installer', 'bredi' ),
-			'plugin_activated'                => __( 'Plugin activated successfully.', 'bredi' ),
-			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'bredi' ),
+			'return'                          => __( 'Return to Required Plugins Installer', 'larapress' ),
+			'plugin_activated'                => __( 'Plugin activated successfully.', 'larapress' ),
+			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'larapress' ),
 			/* translators: 1: plugin name. * /
-			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'bredi' ),
+			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'larapress' ),
 			/* translators: 1: plugin name. * /
-			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'bredi' ),
+			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'larapress' ),
 			/* translators: 1: dashboard link. * /
-			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'bredi' ),
-			'dismiss'                         => __( 'Dismiss this notice', 'bredi' ),
-			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'bredi' ),
-			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'bredi' ),
+			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'larapress' ),
+			'dismiss'                         => __( 'Dismiss this notice', 'larapress' ),
+			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'larapress' ),
+			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'larapress' ),
 
 			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
 		),

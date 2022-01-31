@@ -1,6 +1,6 @@
-# Bredi WordPress Boilerplate
+# Larapress WordPress Boilerplate
 
-Tema base WordPress desenvolvido pela equipe de front-end da [Bredi](https://bredi.com.br), baseado no [Underscores](https://underscores.me).
+Tema base WordPress desenvolvido pela equipe de front-end da [Larapress](https://larapress.com.br), baseado no [Underscores](https://underscores.me).
 
 ## Requisitos
 
@@ -11,14 +11,14 @@ Tema base WordPress desenvolvido pela equipe de front-end da [Bredi](https://bre
 
 ## Instalando o boilerplate
 
-Clone o [boilerplate](https://github.com/brediweb/boilerplate-wordpress) dentro da sua instalação do WordPress em `meu-projeto\wp-content\themes` e entre no diretório do projeto:
+Clone o [boilerplate](https://github.com/larapressweb/boilerplate-wordpress) dentro da sua instalação do WordPress em `meu-projeto\wp-content\themes` e entre no diretório do projeto:
 
 ```bash
-  git clone https://github.com/brediweb/boilerplate-wordpress.git bredi
+  git clone https://github.com/larapressweb/boilerplate-wordpress.git larapress
 ```
 
 ```bash
-  cd bredi
+  cd larapress
 ```
 
 Exclua a pasta `.git` para não versioná-la. Caso precise versionar seu projeto, inicialize o git em branco:

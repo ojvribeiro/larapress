@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Bredi
+ * @package Larapress
  */
 
   // Para editar a view do Footer, vá até o arquivo abaixo

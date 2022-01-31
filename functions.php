@@ -1,10 +1,10 @@
 <?php
 /**
- * Bredi functions and definitions
+ * Larapress functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Bredi
+ * @package Larapress
  */
 
 
@@ -38,14 +38,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function bredi_setup() {
+function larapress_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Bredi, use a find and replace
-		* to change 'bredi' to the name of your theme in all the template files.
+		* If you're building a theme based on Larapress, use a find and replace
+		* to change 'larapress' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'bredi', _DIR .'/languages' );
+	load_theme_textdomain( 'larapress', _DIR .'/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -68,7 +68,7 @@ function bredi_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'bredi' ),
+			'menu-1' => esc_html__( 'Primary', 'larapress' ),
 		)
 	);
 
@@ -80,7 +80,7 @@ function bredi_setup() {
 	 */
 	add_theme_support('custom-logo');
 }
-add_action( 'after_setup_theme', 'bredi_setup' );
+add_action( 'after_setup_theme', 'larapress_setup' );
 
 
 
@@ -92,20 +92,20 @@ add_action( 'after_setup_theme', 'bredi_setup' );
 /**
  * Enqueue scripts and styles.
  */
-function bredi_scripts() {
-	wp_enqueue_style( 'bredi-style', get_stylesheet_uri(), array(), _S_VERSION );
+function larapress_scripts() {
+	wp_enqueue_style( 'larapress-style', get_stylesheet_uri(), array(), _S_VERSION );
 
   // Libraries loaded on Webpack file
-	wp_enqueue_script( 'bredi-bundle', __DIR .'/public/js/bundle.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'larapress-bundle', __DIR .'/public/js/bundle.js', array(), _S_VERSION, true );
 
   // Main script
-	wp_enqueue_script( 'bredi-main', __DIR .'/public/js/main.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'larapress-main', __DIR .'/public/js/main.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'bredi_scripts' );
+add_action( 'wp_enqueue_scripts', 'larapress_scripts' );
 
 
 
@@ -152,7 +152,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require_once _DIR .'/plugins/tgm/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'bredi_register_required_plugins' );
+add_action( 'tgmpa_register', 'larapress_register_required_plugins' );
 
 /**
  * Register the required plugins for this theme.
@@ -171,7 +171,7 @@ add_action( 'tgmpa_register', 'bredi_register_required_plugins' );
  *
  * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
  */
-function bredi_register_required_plugins() {
+function larapress_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
@@ -243,7 +243,7 @@ function bredi_register_required_plugins() {
 	 * Only uncomment the strings in the config array if you want to customize the strings.
 	 */
 	$config = array(
-		'id'           => 'bredi',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'id'           => 'larapress',                 // Unique ID for hashing notices for multiple instances of TGMPA.
 		'default_path' =>  _DIR .'/plugins/tgm/plugins/',                      // Default absolute path to bundled plugins.
 		'menu'         => 'tgmpa-install-plugins', // Menu slug.
 		'parent_slug'  => 'themes.php',            // Parent menu slug.
@@ -256,76 +256,76 @@ function bredi_register_required_plugins() {
 
 		
 		'strings'      => array(
-			'page_title'                      => __( 'Instalar plugins obrigatórios', 'bredi' ),
-			'menu_title'                      => __( 'Instalar plugins', 'bredi' ),
+			'page_title'                      => __( 'Instalar plugins obrigatórios', 'larapress' ),
+			'menu_title'                      => __( 'Instalar plugins', 'larapress' ),
 			/* translators: %s: plugin name. */
-			'installing'                      => __( 'Instalando Plugin: %s', 'bredi' ),
+			'installing'                      => __( 'Instalando Plugin: %s', 'larapress' ),
 			/* translators: %s: plugin name. */
-			'updating'                        => __( 'Atualizando plugin: %s', 'bredi' ),
-			'oops'                            => __( 'Algo deu errado com a Plugin API.', 'bredi' ),
+			'updating'                        => __( 'Atualizando plugin: %s', 'larapress' ),
+			'oops'                            => __( 'Algo deu errado com a Plugin API.', 'larapress' ),
 			'notice_can_install_required'     => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'Este tema exige o seguinte plugin: %1$s.',
 				'Este tema exige os seguintes plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_install_recommended'  => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'Este tema recomenda o seguinte plugin: %1$s.',
 				'Este tema recomenda os seguintes plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_ask_to_update'            => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'O seguinte plugin precisa ser atualizado para sua última versão para garantir a máxima compatibilidade com este tema: %1$s.',
 				'Os seguintes plugins precisam ser atualizados para sua última versão para garantir a máxima compatibilidade com este tema: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_ask_to_update_maybe'      => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'Existe uma atualização para: %1$s.',
 				'Existem atualizações disponíveis para os seguintes plugins: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_activate_required'    => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'O seguinte plugin obrigatório está atualmente inativo: %1$s.',
 				'Os seguintes plugins obrigatórios estão atualmente inativos: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'notice_can_activate_recommended' => _n_noop(
 				/* translators: 1: plugin name(s). */
 				'O seguinte plugin recomendado está atualmente inativo: %1$s.',
 				'Os seguintes plugins recomendados estão atualmente inativos: %1$s.',
-				'bredi'
+				'larapress'
 			),
 			'install_link'                    => _n_noop(
 				'Instalar plugin',
 				'Instalar plugins',
-				'bredi'
+				'larapress'
 			),
 			'update_link' 					  => _n_noop(
 				'Atualizar plugin',
 				'Atualizar plugins',
-				'bredi'
+				'larapress'
 			),
 			'activate_link'                   => _n_noop(
 				'Ativar plugin',
 				'Ativar plugins',
-				'bredi'
+				'larapress'
 			),
-			'return'                          => __( 'Voltar para a instalação de plugins obrigatórios', 'bredi' ),
-			'plugin_activated'                => __( 'Plugin ativado com sucesso.', 'bredi' ),
-			'activated_successfully'          => __( 'O seguinte plugin foi ativado com sucesso:', 'bredi' ),
+			'return'                          => __( 'Voltar para a instalação de plugins obrigatórios', 'larapress' ),
+			'plugin_activated'                => __( 'Plugin ativado com sucesso.', 'larapress' ),
+			'activated_successfully'          => __( 'O seguinte plugin foi ativado com sucesso:', 'larapress' ),
 			/* translators: 1: plugin name. */
-			'plugin_already_active'           => __( 'Nenhum ação realizada. O plugin %1$s já estava ativo.', 'bredi' ),
+			'plugin_already_active'           => __( 'Nenhum ação realizada. O plugin %1$s já estava ativo.', 'larapress' ),
 			/* translators: 1: plugin name. */
-			'plugin_needs_higher_version'     => __( 'Plugin não ativado. Uma versão mais recente de %s é necessária para este tema. Por favor, atualize o plugin.', 'bredi' ),
+			'plugin_needs_higher_version'     => __( 'Plugin não ativado. Uma versão mais recente de %s é necessária para este tema. Por favor, atualize o plugin.', 'larapress' ),
 			/* translators: 1: dashboard link. */
-			'complete'                        => __( 'Todos os plugins foram instalados e ativados com sucesso. %1$s', 'bredi' ),
-			'dismiss'                         => __( 'Ignorar mensagem', 'bredi' ),
-			'notice_cannot_install_activate'  => __( 'Existem um ou mais plugins obrigatórios ou recomendados para instalar, atualizar ou ativar.', 'bredi' ),
-			'contact_admin'                   => __( 'Por favor, contate o administrador deste site para obter ajuda.', 'bredi' ),
+			'complete'                        => __( 'Todos os plugins foram instalados e ativados com sucesso. %1$s', 'larapress' ),
+			'dismiss'                         => __( 'Ignorar mensagem', 'larapress' ),
+			'notice_cannot_install_activate'  => __( 'Existem um ou mais plugins obrigatórios ou recomendados para instalar, atualizar ou ativar.', 'larapress' ),
+			'contact_admin'                   => __( 'Por favor, contate o administrador deste site para obter ajuda.', 'larapress' ),
 
 			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
 		),
