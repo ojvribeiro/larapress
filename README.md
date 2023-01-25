@@ -1,27 +1,27 @@
-# Bredi WordPress Boilerplate
+# Larapress
 
-Tema base WordPress desenvolvido pela equipe de front-end da [Bredi](https://bredi.com.br), baseado no [Underscores](https://underscores.me).
+Blank WordPress Theme inspired by Laravel, based on [Underscores](https://underscores.me).
 
-## Requisitos
+## Requisites
 
-- WordPress 5.9
+- WordPress ^5.9
 - PHP ^7.4
 - Node.js ^14.16.1
 - NPM ^6.14.12
 
-## Instalando o boilerplate
+## Installation
 
-Clone o [boilerplate](https://github.com/brediweb/boilerplate-wordpress) dentro da sua instalação do WordPress em `meu-projeto\wp-content\themes` e entre no diretório do projeto:
+Clone the repo inside the `your-project\wp-content\themes` folder e entre no diretório do projeto:
 
 ```bash
-  git clone https://github.com/brediweb/boilerplate-wordpress.git bredi
+  git clone https://github.com/ojvribeiro/larapress.git larapress
 ```
 
 ```bash
-  cd bredi
+  cd larapress
 ```
 
-Exclua a pasta `.git` para não versioná-la. Caso precise versionar seu projeto, inicialize o git em branco:
+Remove the `.git` folder. Start a new repo if necessary:
 
 ```bash
   rm -rf .git
@@ -31,24 +31,22 @@ Exclua a pasta `.git` para não versioná-la. Caso precise versionar seu projeto
   git init
 ```
 
-Instale os pacotes do NPM:
+## Installing dependecies
 
 ```bash
   npm install
 ```
 
-## Compilando os assets
-
-Enquanto em ambiente de desenvolvimento, rode o comando abaixo para compilar os arquivos JS e CSS do tema:
+## Compiling assets
 
 ```bash
   npm run watch
 ```
 
-Antes de mandar tudo para produção, o comando abaixo deve ser rodado para gerar arquivos otimizados.
+Larapress uses Laravel Mix for bundling assets.
+
+## Optimizing for production
 
 ```bash
   npm run prod
 ```
-
-Os arquivos a serem compilados se encontram no arquivo `webpack.mix.js`, na raiz do tema.
