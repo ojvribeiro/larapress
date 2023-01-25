@@ -11,7 +11,7 @@ Blank WordPress Theme inspired by Laravel, based on [Underscores](https://unders
 
 ## Installation
 
-Clone the repo inside the `your-project\wp-content\themes` folder e entre no diretório do projeto:
+Clone the repo inside the `your-project\wp-content\themes` folder then `cd` to `/larapress`:
 
 ```bash
   git clone https://github.com/ojvribeiro/larapress.git larapress
