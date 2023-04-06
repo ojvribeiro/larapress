@@ -6,9 +6,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Bredi
+ * @package Larapress
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -16,14 +15,14 @@
 
   <?php
     require_once _DIR .'/resources/views/components/head.php';
+    
+    wp_head();
   ?>
-	
-  <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-  <?php wp_body_open(); ?>
-
   <?php
+    wp_body_open();
+  
     require_once _DIR .'/resources/views/components/header.php';
   ?>

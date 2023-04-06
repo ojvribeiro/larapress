@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package Bredi
+ * @package Larapress
  */
 
 /**
@@ -14,13 +14,13 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function bredi_jetpack_setup() {
+function larapress_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'bredi_infinite_scroll_render',
+			'render'    => 'larapress_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -33,7 +33,7 @@ function bredi_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'bredi-style',
+				'stylesheet' => 'larapress-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -48,13 +48,13 @@ function bredi_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'bredi_jetpack_setup' );
+add_action( 'after_setup_theme', 'larapress_jetpack_setup' );
 
-if ( ! function_exists( 'bredi_infinite_scroll_render' ) ) :
+if ( ! function_exists( 'larapress_infinite_scroll_render' ) ) :
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function bredi_infinite_scroll_render() {
+	function larapress_infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :

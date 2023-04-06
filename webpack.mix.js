@@ -16,6 +16,7 @@ mix
   .styles([
       // Insira os caminhos das bibliotecas que usará abaixo...
       // 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+      'node_modules/animate.css/animate.min.css',
 
     ], 'public/css/bundle.css'
   )

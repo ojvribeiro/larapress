@@ -6,23 +6,17 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Bredi
+ * @package Larapress
  */
 
-?>
-
-<?php
   // Para editar a view do Footer, vá até o arquivo abaixo
   require_once _DIR .'/resources/views/components/footer.php';
-?>
 
-
-<?php
   // Para scripts via CDN, vá até o arquivo abaixo
   require_once _DIR .'/resources/views/components/scripts.php';
-?>
 
-<?php wp_footer(); ?>
+  wp_footer();
+?>
 
 </body>
 </html>

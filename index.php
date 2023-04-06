@@ -6,15 +6,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Bredi
+ * @package Larapress
  */
 
 get_header();
-?>
 
-	<?php
-    require_once _DIR .'/page-templates/index.php';
-  ?>
+require_once _DIR .'/page-templates/index.php';
 
-<?php
 get_footer();

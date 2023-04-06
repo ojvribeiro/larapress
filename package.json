@@ -4,14 +4,14 @@
   "description": "Hi. I'm a starter theme called _s, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.",
   "author": "Automattic Theme Team",
   "license": "GPL-2.0-or-later",
-  "homepage": "https://github.com/brediweb/boilerplate-wordpress#readme",
+  "homepage": "https://github.com/larapressweb/boilerplate-wordpress#readme",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brediweb/boilerplate-wordpress.git"
+    "url": "git+https://github.com/larapressweb/boilerplate-wordpress.git"
   },
   "bugs": {
-    "url": "https://github.com/brediweb/boilerplate-wordpress/issues"
+    "url": "https://github.com/larapressweb/boilerplate-wordpress/issues"
   },
   "engines": {
     "node": ">=14.16.1"
@@ -28,10 +28,14 @@
   "devDependencies": {
     "browser-sync": "^2.28.1",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "jshint": "^2.13.4",
     "laravel-mix": "^6.0.6",
     "postcss": "^8.1.14",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1"
   }
 }
