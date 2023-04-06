@@ -8,9 +8,6 @@
  */
 
 
-include('blade/blade.php');
-
-
 if ( ! defined( '_DIR' ) ) {
 	define( '_DIR', get_template_directory() );
 }
