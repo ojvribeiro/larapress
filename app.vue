@@ -4,4 +4,10 @@
   <Pages />
 </template>
 
+<style>
+  @import '@assets/sass/main.scss';
+
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
