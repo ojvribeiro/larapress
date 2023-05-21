@@ -28,10 +28,9 @@ mix
     output: {
       assetModuleFilename: pathData => {
         // keep only /wp-content/themes/theme-name/ part from descriptionFileRoot
-        const relativePath =
-          pathData.module.resourceResolveData.path
-            .replace(/.*(wp-content\\themes\\)(.*)\\(.*)(\\.*\..*)/, '$1$2\\$3')
-            .replace(/\\/g, '/')
+        const relativePath = pathData.module.resourceResolveData.path
+          .replace(/.*(wp-content\\themes\\)(.*)\\(.*)(\\.*\..*)/, '$1$2\\$3')
+          .replace(/\\/g, '/')
 
         // images
         if (/\.(png|jpe?g|gif|svg|webp|avif|ico)$/i.test(pathData.filename)) {
@@ -87,13 +86,12 @@ mix
 
   .sourceMaps()
 
+  .extract()
   .version()
 
-  .extract()
-
   .browserSync({
-    proxy: 'larapress.test',
-    port: 8000,
+    proxy: process.env.LARAPRESS_LOCAL_URI,
+    port: process.env.LARAPRESS_LOCAL_PORT,
     files: ['index.php', 'app.vue', 'resources/**/*', 'tailwind.config.js'],
     online: false,
     logLevel: 'silent',

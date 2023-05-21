@@ -3,3 +3,4 @@ app/types/auto-imports.d.ts
 app/types/components.d.ts
 public
 mix-manifest.json
+.env
