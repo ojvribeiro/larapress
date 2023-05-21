@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "types": ["node", "webpack-env"],
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "baseUrl": "../..",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "@assets/*": ["./resources/assets/*"],
+      "@components/*": ["./resources/components/*"],
+      "@composables/*": ["./resources/composables/*"],
+      "@layouts/*": ["./resources/layouts/*"],
+      "@views/*": ["./resources/views/*"],
+      "@pages/*": ["./resources/pages/*"],
+    }
+  },
+  "include": [
+    "../../resources/**/*",
+    "../../app/vue/**/*",
+    "components.d.ts",
+    "vue-shims.d.ts",
+    "auto-imports.d.ts"
+  ],
+  "exclude": ["../../public", "../../node_modules"]
+}
