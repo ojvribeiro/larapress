@@ -29,13 +29,13 @@ mix
       assetModuleFilename: pathData => {
         // keep only /wp-content/themes/theme-name/ part from descriptionFileRoot
         const relativePath =
-          pathData.module.resourceResolveData.descriptionFileRoot
-            .replace(/.*(wp-content\\themes\\)(.*)(.*)/, '$1$2')
+          pathData.module.resourceResolveData.path
+            .replace(/.*(wp-content\\themes\\)(.*)\\(.*)(\\.*\..*)/, '$1$2\\$3')
             .replace(/\\/g, '/')
 
         // images
         if (/\.(png|jpe?g|gif|svg|webp|avif|ico)$/i.test(pathData.filename)) {
-          return `${relativePath}/resources/assets/img/[name][ext][query]`
+          return `${relativePath}/[name][ext][query]`
         }
       },
     },
