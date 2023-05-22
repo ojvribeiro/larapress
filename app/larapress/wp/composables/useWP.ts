@@ -1,5 +1,5 @@
-import type { IWPPage, IWPPost } from '../types/wordpress'
-import type { IPages, IPost } from '../types/larapress'
+import type { IWPPage, IWPPost, IWPMenu } from '../types/wordpress'
+import type { IMenu, IPage, IPost } from '../types/larapress'
 
 export function useWP() {
   /**
@@ -11,7 +11,7 @@ export function useWP() {
    * const page = useWP().page('about')
    * ```
    */
-  const page = async (slug: string): Promise<IPages> => {
+  const page = async (slug: string): Promise<IPage> => {
     const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await response.json()
 
@@ -41,7 +41,7 @@ export function useWP() {
       meta: typedData.meta,
       acf: typedData.acf,
       _links: typedData._links,
-    } as IPages
+    } as IPage
 
     return page
   }
@@ -137,9 +137,75 @@ export function useWP() {
     return post
   }
 
+  /**
+   * Fetches the menu items from the WP REST API
+   * @returns menu - the menu object
+   * @example
+   * ```ts
+   * const menu = useWP().menu()
+   * ```
+   */
+
+  const menu = async (): Promise<IMenu[]> => {
+    const response = await fetch(`/wp-json/larapress/menu`)
+    const data = await response.json()
+
+    const menuRef = ref<IMenu[]>([])
+
+    const menuValue = data.map((item: IWPMenu) => {
+      const obj: IMenu = {
+        ID: item.ID,
+        post_author: item.post_author,
+        post_date: item.post_date,
+        post_date_gmt: item.post_date_gmt,
+        post_content: item.post_content,
+        post_title: item.post_title,
+        post_excerpt: item.post_excerpt,
+        post_status: item.post_status,
+        comment_status: item.comment_status,
+        ping_status: item.ping_status,
+        post_password: item.post_password,
+        post_name: item.post_name,
+        to_ping: item.to_ping,
+        pinged: item.pinged,
+        post_modified: item.post_modified,
+        post_modified_gmt: item.post_modified_gmt,
+        post_content_filtered: item.post_content_filtered,
+        post_parent: item.post_parent,
+        guid: item.guid,
+        menu_order: item.menu_order,
+        post_type: item.post_type,
+        post_mime_type: item.post_mime_type,
+        comment_count: item.comment_count,
+        filter: item.filter,
+        db_id: item.db_id,
+        menu_item_parent: item.menu_item_parent,
+        object_id: item.object_id,
+        object: item.object,
+        type: item.type,
+        type_label: item.type_label,
+        url: item.url,
+        path: item.url !== '/' ? new URL(item.url).pathname : '/',
+        title: item.title,
+        target: item.target,
+        attr_title: item.attr_title,
+        description: item.description,
+        classes: item.classes,
+        xfn: item.xfn,
+      }
+
+      return obj
+    })
+
+    menuRef.value = menuValue
+
+    return menuRef.value
+  }
+
   return {
     page,
     posts,
     post,
+    menu,
   }
 }
