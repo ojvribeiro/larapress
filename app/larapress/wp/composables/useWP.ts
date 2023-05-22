@@ -1,12 +1,11 @@
-import type { WPPages } from '../types/WPPages'
-import type { LarapressPages } from '../types/LarapressPages'
+import type { IWPPage, IWPPost } from '../types/wordpress'
+import type { IPages, IPost } from '../types/larapress'
 
 export function useWP() {
-  const page = async (slug: string): Promise<LarapressPages> => {
+  const page = async (slug: string): Promise<IPages> => {
     const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await response.json()
 
-    const apiData: WPPages = data[0]
     const apiDataTransformed = {
       id: apiData.id,
       slug: apiData.slug,
@@ -32,9 +31,10 @@ export function useWP() {
       meta: apiData.meta,
       acf: apiData.acf,
       _links: apiData._links,
-    } as LarapressPages
 
     return apiDataTransformed
+    const typedData: IWPPage = data[0]
+    } as IPages
   }
 
   return {
