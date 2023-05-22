@@ -92,9 +92,54 @@ export function useWP() {
 
     return posts as IPost[]
   }
+
+  /**
+   * Fetches a single post from the WP REST API
+   * @param slug - the slug of the post to fetch
+   * @returns post - the post object
+   * @example
+   * ```ts
+   * const post = useWP().post('hello-world')
+   * ```
+   */
+  const post = async (slug: string) => {
+    const response = await fetch(`/wp-json/wp/v2/posts?slug=${slug}`)
+    const data = await response.json()
+
+    const typedData: IWPPost = data[0]
+    const post = {
+      id: typedData.id,
+      slug: typedData.slug,
+      title: typedData.title.rendered,
+      content: typedData.content.rendered,
+      excerpt: typedData.excerpt.rendered,
+      author_id: typedData.author,
+      date: typedData.date,
+      date_gmt: typedData.date_gmt,
+      guid: typedData.guid.rendered,
+      modified: typedData.modified,
+      modified_gmt: typedData.modified_gmt,
+      status: typedData.status,
+      type: typedData.type,
+      link: typedData.link,
+      is_protected: typedData.content.protected,
+      featured_media: typedData.featured_media,
+      parent: typedData.parent,
+      menu_order: typedData.menu_order,
+      comment_status: typedData.comment_status,
+      ping_status: typedData.ping_status,
+      template: typedData.template,
+      meta: typedData.meta,
+      acf: typedData.acf,
+      _links: typedData._links,
+    } as IPost
+
+    return post
   }
 
   return {
     page,
+    posts,
+    post,
   }
 }
