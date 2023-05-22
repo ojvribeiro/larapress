@@ -1,3 +1,5 @@
 /**
   * You can styles and import them in your components.
   */
+@import '~@wordpress/block-library/build-style/style.css';
+@import './blocks/_wp-blocks.scss';

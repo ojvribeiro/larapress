@@ -30,6 +30,7 @@
     "@types/webpack-env": "^1.18.0",
     "@vue/compiler-sfc": "^3.3.4",
     "@vueuse/head": "^1.1.26",
+    "@wordpress/block-library": "^8.10.0",
     "autoprefixer": "^10.4.14",
     "browser-sync": "^2.29.3",
     "browser-sync-webpack-plugin": "2.3.0",
