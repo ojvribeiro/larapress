@@ -76,7 +76,7 @@ export function useWP() {
         modified_gmt: post.modified_gmt,
         status: post.status,
         type: post.type,
-        link: post.link,
+        link: new URL(post.link).pathname, // link as path name
         is_protected: post.content.protected,
         featured_media: post.featured_media,
         parent: post.parent,

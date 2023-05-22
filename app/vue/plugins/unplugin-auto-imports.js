@@ -39,6 +39,11 @@ module.exports.UnpluginAutoImports = () => {
         // presets
         'vue',
         'vue-router',
+        {
+          '@vueuse/router': [
+            'useRouteParams'
+          ]
+        }
       ],
       // Enable auto import by filename for default module exports under directories
       defaultExportByFilename: true,
