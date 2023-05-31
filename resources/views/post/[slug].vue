@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  const slug = useRouteParams('slug')
+  const slug = useRouteParams('slug') as Ref<string>
 
-  const post = await useWP().post(slug.value as string)
+  const post = await useWP().post(slug.value)
 </script>
 
 <template>
