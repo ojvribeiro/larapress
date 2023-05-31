@@ -1,6 +1,11 @@
 import type { IWPPage, IWPPost, IWPMenu } from '../types/wordpress'
 import type { IMenu, IPage, IPost } from '../types/larapress'
 
+import transformPostData from '../functions/ts/transforms/post'
+import transformPostsData from '../functions/ts/transforms/posts'
+import transformPageData from '../functions/ts/transforms/page'
+import transformMenuData from '../functions/ts/transforms/menu'
+
 export function useWP() {
   /**
    * Fetches a single page from the WP REST API
@@ -15,33 +20,9 @@ export function useWP() {
     const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await response.json()
 
+    // Transform the data into a typed object
     const typedData: IWPPage = data[0]
-    const page = {
-      id: typedData.id,
-      slug: typedData.slug,
-      title: typedData.title.rendered,
-      content: typedData.content.rendered,
-      excerpt: typedData.excerpt.rendered,
-      author_id: typedData.author,
-      date: typedData.date,
-      date_gmt: typedData.date_gmt,
-      guid: typedData.guid.rendered,
-      modified: typedData.modified,
-      modified_gmt: typedData.modified_gmt,
-      status: typedData.status,
-      type: typedData.type,
-      link: typedData.link,
-      is_protected: typedData.content.protected,
-      featured_media: typedData.featured_media,
-      parent: typedData.parent,
-      menu_order: typedData.menu_order,
-      comment_status: typedData.comment_status,
-      ping_status: typedData.ping_status,
-      template: typedData.template,
-      meta: typedData.meta,
-      acf: typedData.acf,
-      _links: typedData._links,
-    } as IPage
+    const page: IPage = transformPageData(typedData)
 
     return page
   }
@@ -56,38 +37,13 @@ export function useWP() {
    * @todo add pagination
    */
   const posts = async () => {
-    const response = await fetch(`/wp-json/wp/v2/posts`)
+    const response = await fetch('/wp-json/wp/v2/posts')
     const data = await response.json()
 
     let posts = []
 
     data.map((post: IWPPost) => {
-      posts.push({
-        id: post.id,
-        slug: post.slug,
-        title: post.title.rendered,
-        content: post.content.rendered,
-        excerpt: post.excerpt.rendered,
-        author_id: post.author,
-        date: post.date,
-        date_gmt: post.date_gmt,
-        guid: post.guid.rendered,
-        modified: post.modified,
-        modified_gmt: post.modified_gmt,
-        status: post.status,
-        type: post.type,
-        link: new URL(post.link).pathname, // link as path name
-        is_protected: post.content.protected,
-        featured_media: post.featured_media,
-        parent: post.parent,
-        menu_order: post.menu_order,
-        comment_status: post.comment_status,
-        ping_status: post.ping_status,
-        template: post.template,
-        meta: post.meta,
-        acf: post.acf,
-        _links: post._links,
-      })
+      posts.push(transformPostsData(post))
     })
 
     return posts as IPost[]
@@ -106,33 +62,9 @@ export function useWP() {
     const response = await fetch(`/wp-json/wp/v2/posts?slug=${slug}`)
     const data = await response.json()
 
+    // Transform the data into a typed object
     const typedData: IWPPost = data[0]
-    const post = {
-      id: typedData.id,
-      slug: typedData.slug,
-      title: typedData.title.rendered,
-      content: typedData.content.rendered,
-      excerpt: typedData.excerpt.rendered,
-      author_id: typedData.author,
-      date: typedData.date,
-      date_gmt: typedData.date_gmt,
-      guid: typedData.guid.rendered,
-      modified: typedData.modified,
-      modified_gmt: typedData.modified_gmt,
-      status: typedData.status,
-      type: typedData.type,
-      link: typedData.link,
-      is_protected: typedData.content.protected,
-      featured_media: typedData.featured_media,
-      parent: typedData.parent,
-      menu_order: typedData.menu_order,
-      comment_status: typedData.comment_status,
-      ping_status: typedData.ping_status,
-      template: typedData.template,
-      meta: typedData.meta,
-      acf: typedData.acf,
-      _links: typedData._links,
-    } as IPost
+    const post = transformPostData(typedData)
 
     return post
   }
@@ -145,54 +77,14 @@ export function useWP() {
    * const menu = useWP().menu()
    * ```
    */
-
   const menu = async (): Promise<IMenu[]> => {
-    const response = await fetch(`/wp-json/larapress/menu`)
+    const response = await fetch('/wp-json/larapress/menu')
     const data = await response.json()
 
+    // Transform the data into a typed object
     const menuRef = ref<IMenu[]>([])
-
-    const menuValue = data.map((item: IWPMenu) => {
-      const obj: IMenu = {
-        ID: item.ID,
-        post_author: item.post_author,
-        post_date: item.post_date,
-        post_date_gmt: item.post_date_gmt,
-        post_content: item.post_content,
-        post_title: item.post_title,
-        post_excerpt: item.post_excerpt,
-        post_status: item.post_status,
-        comment_status: item.comment_status,
-        ping_status: item.ping_status,
-        post_password: item.post_password,
-        post_name: item.post_name,
-        to_ping: item.to_ping,
-        pinged: item.pinged,
-        post_modified: item.post_modified,
-        post_modified_gmt: item.post_modified_gmt,
-        post_content_filtered: item.post_content_filtered,
-        post_parent: item.post_parent,
-        guid: item.guid,
-        menu_order: item.menu_order,
-        post_type: item.post_type,
-        post_mime_type: item.post_mime_type,
-        comment_count: item.comment_count,
-        filter: item.filter,
-        db_id: item.db_id,
-        menu_item_parent: item.menu_item_parent,
-        object_id: item.object_id,
-        object: item.object,
-        type: item.type,
-        type_label: item.type_label,
-        url: item.url,
-        path: item.url !== '/' ? new URL(item.url).pathname : '/',
-        title: item.title,
-        target: item.target,
-        attr_title: item.attr_title,
-        description: item.description,
-        classes: item.classes,
-        xfn: item.xfn,
-      }
+    const menuValue = data.map((item: IWPMenu): IMenu => {
+      const obj: IMenu = transformMenuData(item)
 
       return obj
     })
