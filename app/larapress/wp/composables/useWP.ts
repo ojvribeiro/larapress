@@ -6,6 +6,8 @@ import transformPostsData from '../functions/ts/transforms/posts'
 import transformPageData from '../functions/ts/transforms/page'
 import transformMenuData from '../functions/ts/transforms/menu'
 
+import { usePageLoadingStore } from '~/app/vue/shared/stores/usePageLoadingStore'
+
 export function useWP() {
   /**
    * Fetches a single page from the WP REST API
@@ -17,12 +19,18 @@ export function useWP() {
    * ```
    */
   const page = async (slug: string): Promise<IPage> => {
+    const pageLoadingStore = usePageLoadingStore()
+    pageLoadingStore.loading = true
+
     const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await response.json()
+
 
     // Transform the data into a typed object
     const typedData: IWPPage = data[0]
     const page: IPage = transformPageData(typedData)
+
+    pageLoadingStore.loading = false
 
     return page
   }
@@ -59,12 +67,17 @@ export function useWP() {
    * ```
    */
   const post = async (slug: string) => {
+    const pageLoadingStore = usePageLoadingStore()
+    pageLoadingStore.loading = true
+
     const response = await fetch(`/wp-json/wp/v2/posts?slug=${slug}`)
     const data = await response.json()
 
     // Transform the data into a typed object
     const typedData: IWPPost = data[0]
     const post = transformPostData(typedData)
+
+    pageLoadingStore.loading = false
 
     return post
   }

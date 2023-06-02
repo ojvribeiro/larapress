@@ -77,6 +77,9 @@ pageComponents.keys().map(key => {
   routes.push({
     path: slugName === '/index' ? '/' : `/${slugName}`,
     component: pageComponents(key).default,
+    meta: {
+      transition: 'fade',
+    },
   })
 })
 

@@ -5,9 +5,11 @@
 <template>
   <Suspense>
     <RouterView v-slot="{ Component, route }">
-      <KeepAlive>
-        <component :is="Component" :key="route.fullPath" />
-      </KeepAlive>
+      <Transition :name="route.meta.transition" mode="out-in">
+        <KeepAlive>
+          <component :is="Component" :key="route.fullPath" />
+        </KeepAlive>
+      </Transition>
     </RouterView>
   </Suspense>
 </template>

@@ -1,7 +1,9 @@
 <template>
-  <!-- The app.vue file is the entry point for your Vue application -->
-  <!-- The <Pages> component will render the view based on the current route -->
-  <Pages />
+  <div>
+    <LoadingIndicator />
+
+    <Pages />
+  </div>
 </template>
 
 <style>
@@ -10,4 +12,14 @@
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: 0.2s ease-in-out;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
 </style>

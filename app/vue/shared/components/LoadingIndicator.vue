@@ -1,38 +1,43 @@
 <template>
-  <div class="loading-indicator" v-show="isLoading" />
+  <div class="loading-indicator" v-show="pageLoadingStore.loading" />
 </template>
 
-<script setup>
-  import { ref } from 'vue'
-  import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+<script setup lang="ts">
+  import { usePageLoadingStore } from '../stores/usePageLoadingStore'
 
-  const isLoading = ref(false)
+  const pageLoadingStore = usePageLoadingStore()
 
-  onBeforeRouteLeave((to, from) => {
-    console.log('onBeforeRouteLeave');
-    isLoading.value = true
-  })
-
-  onBeforeRouteUpdate(() => {
-    isLoading.value = true
-  })
-
-  // This is a hack to make sure the loading indicator is hidden
-  // when the page is loaded. Otherwise, it will be visible for a
-  // split second before the page is rendered.
-  setTimeout(() => {
-    isLoading.value = false
-  }, 1000)
+  withDefaults(
+    defineProps<{
+      color?: string
+    }>(),
+    {
+      color: '#FF3D3D',
+    }
+  )
 </script>
 
-<style lang="scss">
+<style scoped>
   .loading-indicator {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 8px;
-    background-color: #ff3000;
+    height: 2px;
     z-index: 100;
+    box-shadow: 0 0 10px v-bind(color);
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0% {
+      background-color: v-bind(color);
+    }
+    50% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: v-bind(color);
+    }
   }
 </style>
