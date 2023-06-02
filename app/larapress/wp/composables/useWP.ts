@@ -20,6 +20,23 @@ import transformCategoryData from '~/app/larapress/wp/functions/ts/transforms/ca
 
 import { usePageLoadingStore } from '~/app/vue/shared/stores/usePageLoadingStore'
 
+/**
+ * A composable function that provides access to the WP REST API
+ * @returns an object containing functions to fetch data from the WP REST API
+ * @example
+ * ```vue
+ * <script setup lang="ts">
+ * const page = await useWP().page('about')
+ * </script>
+ *
+ * <template>
+ *   <div>
+ *     <h1>{{ page.title }}</h1>
+ *     <div v-html="page.content"></div>
+ *   </div>
+ * </template>
+ * ```
+ */
 export function useWP() {
   /**
    * Fetches a single page from the WP REST API
