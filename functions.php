@@ -24,3 +24,30 @@ add_action('rest_api_init', function () {
     'callback' => 'get_menu',
   ));
 });
+
+function rest_filter_by_custom_taxonomy($args, $request)
+{
+
+  if (isset($request['category_slug'])) {
+    $category_slug = sanitize_text_field($request['category_slug']);
+    $args['tax_query'] = [
+      [
+        'taxonomy' => 'category',
+        'field'    => 'slug',
+        'terms'    => $category_slug,
+      ]
+    ];
+  } else if (isset($request['tag_slug'])) {
+    $tag_slug = sanitize_text_field($request['tag_slug']);
+    $args['tax_query'] = [
+      [
+        'taxonomy' => 'post_tag',
+        'field'    => 'slug',
+        'terms'    => $tag_slug,
+      ]
+    ];
+  }
+
+  return $args;
+}
+add_filter('rest_post_query', 'rest_filter_by_custom_taxonomy', 10, 3);

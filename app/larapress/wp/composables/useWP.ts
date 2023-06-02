@@ -72,16 +72,40 @@ export function useWP() {
    * ```
    * @todo add pagination
    */
-  const posts = async () => {
-    const response = await fetch('/wp-json/wp/v2/posts')
-    const data = await response.json()
-
+  const posts = async (
+    options: {
+      category?: string
+      tag?: string
+    } = {}
+  ): Promise<IPost[]> => {
     let posts = []
 
-    data.map((post: IWPPost) => {
-      posts.push(transformPostsData(post))
-    })
+    if (options.category !== undefined) {
+      const response = await fetch(
+        `/wp-json/wp/v2/posts?category_slug=${options.category}`
+      )
+      const data = await response.json()
 
+      data.map((post: IWPPost) => {
+        posts.push(transformPostsData(post))
+      })
+    } else if (options.tag !== undefined) {
+      const response = await fetch(
+        `/wp-json/wp/v2/posts?tag_slug=${options.tag}`
+      )
+      const data = await response.json()
+
+      data.map((post: IWPPost) => {
+        posts.push(transformPostsData(post))
+      })
+    } else {
+      const response = await fetch('/wp-json/wp/v2/posts')
+      const data = await response.json()
+
+      data.map((post: IWPPost) => {
+        posts.push(transformPostsData(post))
+      })
+    }
     return posts as IPost[]
   }
 
@@ -105,9 +129,23 @@ export function useWP() {
     const typedData: IWPPost = data[0]
     const post = transformPostData(typedData)
 
+    // get categories
+    const categoriesResponse = await fetch(
+      `/wp-json/wp/v2/categories?post=${post.id}`
+    )
+    const categoriesData = await categoriesResponse.json()
+
+    const categories: ICategory[] = categoriesData.map(
+      (category: IWPCategory) => {
+        return transformCategoryData(category)
+      }
+    )
+
+    post.categories = categories
+
     pageLoadingStore.loading = false
 
-    return post
+    return post as IPost
   }
 
   /**
@@ -156,11 +194,32 @@ export function useWP() {
     return categories as ICategory[]
   }
 
+  /**
+   * Fetches a single category from the WP REST API
+   * @param slug - the slug of the category to fetch
+   * @returns category - the category object
+   * @example
+   * ```ts
+   * const category = useWP().category('uncategorized')
+   * ```
+   */
+  const category = async (slug: string): Promise<ICategory> => {
+    const response = await fetch(`/wp-json/wp/v2/categories?slug=${slug}`)
+    const data = await response.json()
+
+    // Transform the data into a typed object
+    const typedData: IWPCategory = data[0]
+    const category = transformCategoryData(typedData)
+
+    return category as ICategory
+  }
+
   return {
     page,
     posts,
     post,
     menu,
     categories,
+    category,
   }
 }
