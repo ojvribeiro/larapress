@@ -107,6 +107,9 @@ dynamicPageComponents.keys().map((key: string) => {
   routes.push({
     path: slugName === '/index' ? '/' : `/${slugName}`,
     component: dynamicPageComponents(key).default,
+    meta: {
+      transition: 'fade',
+    },
   })
 })
 
