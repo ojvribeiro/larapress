@@ -1,10 +1,22 @@
-import type { IWPPage, IWPPost, IWPMenu } from '../types/wordpress'
-import type { IMenu, IPage, IPost } from '../types/larapress'
+import type {
+  IWPPage,
+  IWPPost,
+  IWPMenu,
+  IWPCategory,
+} from '~/app/larapress/wp/types/wordpress'
 
-import transformPostData from '../functions/ts/transforms/post'
-import transformPostsData from '../functions/ts/transforms/posts'
-import transformPageData from '../functions/ts/transforms/page'
-import transformMenuData from '../functions/ts/transforms/menu'
+import type {
+  IMenu,
+  IPage,
+  IPost,
+  ICategory,
+} from '~/app/larapress/wp/types/larapress'
+
+import transformPostData from '~/app/larapress/wp/functions/ts/transforms/post'
+import transformPostsData from '~/app/larapress/wp/functions/ts/transforms/posts'
+import transformPageData from '~/app/larapress/wp/functions/ts/transforms/page'
+import transformMenuData from '~/app/larapress/wp/functions/ts/transforms/menu'
+import transformCategoryData from '~/app/larapress/wp/functions/ts/transforms/categories'
 
 import { usePageLoadingStore } from '~/app/vue/shared/stores/usePageLoadingStore'
 
@@ -24,7 +36,6 @@ export function useWP() {
 
     const response = await fetch(`/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await response.json()
-
 
     // Transform the data into a typed object
     const typedData: IWPPage = data[0]
@@ -107,10 +118,32 @@ export function useWP() {
     return menuRef.value
   }
 
+  /**
+   * Fetches all categories from the WP REST API
+   * @returns categories - the categories object
+   * @example
+   * ```ts
+   * const categories = useWP().categories()
+   * ```
+   */
+  const categories = async () => {
+    const response = await fetch('/wp-json/wp/v2/categories')
+    const data = await response.json()
+
+    let categories = []
+
+    data.map((category: IWPCategory) => {
+      categories.push(transformCategoryData(category))
+    })
+
+    return categories as ICategory[]
+  }
+
   return {
     page,
     posts,
     post,
     menu,
+    categories,
   }
 }
