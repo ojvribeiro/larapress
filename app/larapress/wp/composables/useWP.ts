@@ -94,7 +94,7 @@ export function useWP() {
    * const post = useWP().post('hello-world')
    * ```
    */
-  const post = async (slug: string) => {
+  const post = async (slug: string): Promise<IPost> => {
     const pageLoadingStore = usePageLoadingStore()
     pageLoadingStore.loading = true
 
@@ -143,7 +143,7 @@ export function useWP() {
    * const categories = useWP().categories()
    * ```
    */
-  const categories = async () => {
+  const categories = async (): Promise<ICategory[]> => {
     const response = await fetch('/wp-json/wp/v2/categories')
     const data = await response.json()
 
