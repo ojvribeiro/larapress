@@ -3,3 +3,12 @@
   */
 @import '~@wordpress/block-library/build-style/style.css';
 @import './blocks/_wp-blocks.scss';
+
+/**
+  * This normalizes the height of the app container to 100% of the viewport.
+  */
+body {
+  [data-larapress-app] > div {
+    height: 100%;
+  }
+}

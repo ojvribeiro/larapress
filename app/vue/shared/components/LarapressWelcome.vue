@@ -151,10 +151,12 @@
   }
 
   .larapress-welcome .larapress-card {
-    background-color: rgba(73 73 73 / 0%);
+    background-color: rgb(73 73 73 / 16%);
     color: #fff;
     padding: 24px;
     border-radius: 16px;
+    width: fit-content;
+    margin-inline: auto;
   }
 
   .larapress-welcome .larapress-card a {
