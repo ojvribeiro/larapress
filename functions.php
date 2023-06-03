@@ -1,7 +1,10 @@
 <?php
 
 if (!function_exists('mytheme_register_nav_menu')) {
-
+  /**
+   * Register menu
+   * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+   */
   function mytheme_register_nav_menu()
   {
     register_nav_menus(array(
@@ -25,6 +28,12 @@ add_action('rest_api_init', function () {
   ));
 });
 
+/**
+ * Add custom taxonomy to REST API
+ * @link https://developer.wordpress.org/reference/functions/register_taxonomy/
+ *
+ * @return void
+ */
 function rest_filter_by_custom_taxonomy($args, $request)
 {
 
