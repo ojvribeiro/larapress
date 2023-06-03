@@ -60,3 +60,16 @@ function rest_filter_by_custom_taxonomy($args, $request)
   return $args;
 }
 add_filter('rest_post_query', 'rest_filter_by_custom_taxonomy', 10, 3);
+
+/**
+ * Set permalink structure
+ * @link https://codex.wordpress.org/Function_Reference/set_permalink_structure
+ *
+ * @return void
+ */
+function set_permalink()
+{
+  global $wp_rewrite;
+  $wp_rewrite->set_permalink_structure('/post/%postname%/');
+}
+add_action('init', 'set_permalink');
